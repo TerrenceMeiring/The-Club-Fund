@@ -1,5 +1,5 @@
 import { CHALLENGE_BANK } from './challenges-data.js';
-import { state, loadAll, saveProfile, addEntry } from './data.js';
+import { state, loadProfile, loadRoundStats, saveProfile, addEntry } from './data.js';
 import {
   $, setStatus, renderAll, renderChallenges, renderMilestoneEditor,
   openModal, closeModal,
@@ -8,7 +8,7 @@ import {
 async function refresh() {
   setStatus('Loading…');
   try {
-    await loadAll();
+    await Promise.all([loadProfile(), loadRoundStats()]);
     setStatus('Synced');
     renderAll();
   } catch (err) {
