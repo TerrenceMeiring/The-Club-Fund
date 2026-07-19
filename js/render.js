@@ -14,7 +14,7 @@ export function renderBalance() {
 }
 
 export function renderStats() {
-  const rounds = state.entries.filter(e => e.type === 'round' && e.meta && e.meta.score != null);
+  const rounds = state.entries.filter(e => e.meta && e.meta.score != null);
   $('cfStatBest').textContent = state.profile.best_score != null ? state.profile.best_score : '—';
   $('cfStatRounds').textContent = rounds.length;
   if (rounds.length) {
