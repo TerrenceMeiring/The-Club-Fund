@@ -55,7 +55,7 @@ export function renderLedger() {
     wrap.innerHTML = '<p class="cf-empty">Nothing logged yet.</p>';
     return;
   }
-  wrap.innerHTML = state.entries.slice(0, 50).map(e => {
+  wrap.innerHTML = state.entries.map(e => {
     const date = new Date(e.created_at).toLocaleDateString('en-ZA', { day: 'numeric', month: 'short' });
     const cls = e.amount >= 0 ? 'pos' : 'neg';
     const sign = e.amount >= 0 ? '+' : '';
@@ -75,7 +75,6 @@ export function renderAll() {
   renderBalance();
   renderStats();
   renderChallenges();
-  renderLedger();
 }
 
 export function renderMilestoneEditor() {
